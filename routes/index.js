@@ -24,7 +24,7 @@ router.get("/feed", isLoggedIn, async function (req, res) {
 
 router.get("/profile", isLoggedIn, async function (req, res) {
   const user = await userModel.findOne({ username: req.session.passport.user });
-  res.render("profile", { footer: true, user });
+  res.render("myprofile", { footer: true, user });
 });
 
 router.get("/search", isLoggedIn,  function (req, res) {
@@ -43,9 +43,12 @@ router.get("/upload", isLoggedIn, function (req, res) {
 // register route
 router.post("/register", function (req, res) {
   const userData = new userModel({
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
+    tagline: req.body.tagline,
     username: req.body.username,
-    name: req.body.name,
     email: req.body.email,
+    // profileImage: req.body.profileImage || "defaultProfile.png",
   });
 
   // create a new user in the database using our User model then redirect to profile page
@@ -80,7 +83,7 @@ router.post("/logout", function (req, res, next) {
 router.post("/update", upload.single("image"), async function (req, res) {
   const user = await userModel.findOneAndUpdate(
     { username: req.session.passport.user },
-    { username: req.body.username, name: req.body.name, bio: req.body.bio },
+    { username: req.body.username, firstname: req.body.firstname, lastname: req.body.lastname, tagline: req.body.tagline, bio: req.body.bio },
     { new: true }
   );
   if (req.file) {
