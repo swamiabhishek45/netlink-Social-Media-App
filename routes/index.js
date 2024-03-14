@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-const userModel = require("./users");
+const userModel = require("../models/users");
 const passport = require("passport");
 const localStrategy = require("passport-local");
 const upload = require("./multer");
