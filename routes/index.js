@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const userModel = require("../models/users");
+const postsModel = require("../models/posts");
 const passport = require("passport");
 const localStrategy = require("passport-local");
 const upload = require("./multer");
@@ -16,20 +17,26 @@ router.get("/login", function (req, res) {
 });
 
 router.get("/feed", isLoggedIn, async function (req, res) {
-  const user = await userModel.findOne({
-    username: req.session.passport.username,
-  });
-  res.render("feed", { footer: true, user });
+  const posts = await postsModel.find().populate("user");
+  res.render("feed", { footer: true, posts });
 });
 
 router.get("/profile", isLoggedIn, async function (req, res) {
-  const user = await userModel.findOne({ username: req.session.passport.user });
+  const user = await userModel
+    .findOne({ username: req.session.passport.user })
+    .populate("posts");
   res.render("myprofile", { footer: true, user });
 });
 
 router.get("/search", isLoggedIn, async function (req, res) {
   const user = await userModel.findOne({ username: req.session.passport.user });
   res.render("search", { footer: true, user });
+});
+router.get("/like/post/:id", isLoggedIn, async function (req, res) {
+  const user = await userModel.findOne({ username: req.session.passport.user });
+  const post = await postsModel.findOne({ _id: req.params.id})
+
+  post.like.indexOf(user._id)
 });
 
 router.get("/edit", isLoggedIn, async function (req, res) {
@@ -38,8 +45,14 @@ router.get("/edit", isLoggedIn, async function (req, res) {
 });
 
 router.get("/upload", isLoggedIn, async function (req, res) {
-  const user = await userModel.findOne({ username: req.session.passport.user});
+  const user = await userModel.findOne({ username: req.session.passport.user });
   res.render("upload", { footer: true, user });
+});
+
+router.get("/username/:username", isLoggedIn, async function (req, res) {
+  const regex = new RegExp(`^${req.params.username}`, 'i');
+  const users = await userModel.find({ username: regex });
+  res.json(users);
 });
 
 // register route
@@ -100,6 +113,26 @@ router.post("/update", upload.single("image"), async function (req, res) {
   await user.save();
   res.redirect("/profile");
 });
+
+router.post(
+  "/upload",
+  isLoggedIn,
+  upload.single("image"),
+  async function (req, res) {
+    const user = await userModel.findOne({
+      username: req.session.passport.user,
+    });
+    const post = await postsModel.create({
+      picture: req.file.filename,
+      user: user._id,
+      caption: req.body.caption,
+    });
+
+    user.posts.push(post._id);
+    await user.save();
+    res.redirect("/feed");
+  }
+);
 
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) return next();

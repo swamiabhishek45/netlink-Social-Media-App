@@ -7,7 +7,7 @@
         <i class="text-[1.4rem] ri-messenger-line"></i>
       </div>
     </div>
-    <div class="story px-3 flex gap-3 overflow-auto mt-5">
+    <!-- <div class="story px-3 flex gap-3 overflow-auto mt-5">
       <a href="/story">
         <div class="circle flex-shrink-0">
           <div
@@ -18,7 +18,7 @@
           </div>
         </div>
       </a>
-      <!-- <% stories.forEach(function(story){ %>
+       <% stories.forEach(function(story){ %>
         <a href="/story/<%= story.id %>">
           <div class="circle flex-shrink-0">
             <div
@@ -29,14 +29,14 @@
             </div>
           </div>
         </a>
-        <% }) %> -->
-    </div>
+        <% }) %>
+    </div> -->
     <div class="posts parent mb-20">
       <% posts.reverse().forEach(function(post){ %>
         <div class="post mt-10 w-full min-h-[50vh]">
           <div class="title px-4 flex items-center gap-2">
             <div class="w-[9vw] h-[9vw] bg-sky-100 rounded-full overflow-hidden">
-              <img class="w-full h-full object-cover" src="/images/uploads/<%= post.user.picture %>" alt="">
+              <img class="w-full h-full object-cover" src="/images/uploads/<%= post.user.profileImage %>" alt="">
             </div>
             <h4 class="text-sm">
               <%= post.user.username %>
@@ -51,7 +51,7 @@
           </div>
           <div class="options w-full px-4 flex justify-between items-center text-[1.4rem]">
             <div class="flex gap-3 mt-2">
-              <% if(post.like.indexOf(user._id)===-1){ %>
+              <% if(post.likes.indexOf(user._id)===-1){ %>
                 <i class="heart ri-heart-3-line"></i>
                 <% } else { %>
                   <i class="heart ri-heart-3-fill text-red-500"></i>
@@ -66,7 +66,7 @@
                 <% } %>
           </div>
           <h3 class="likeval px-4 mt-2 text-sm leading-none tracking-tight">
-            <%= post.like.length %> likes
+            <%= post.likes.length %> likes
           </h3>
           <h2 class="text-white font-light text-sm mt-2">
             <span class="font-semibold pl-4 pr-2">
