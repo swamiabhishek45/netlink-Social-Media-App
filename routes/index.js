@@ -17,8 +17,9 @@ router.get("/login", function (req, res) {
 });
 
 router.get("/feed", isLoggedIn, async function (req, res) {
+  const user = await userModel.findOne({username: req.session.passport.user})
   const posts = await postsModel.find().populate("user");
-  res.render("feed", { footer: true, posts });
+  res.render("feed", { footer: true, posts,user });
 });
 
 router.get("/profile", isLoggedIn, async function (req, res) {

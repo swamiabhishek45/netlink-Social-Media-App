@@ -1,187 +1,275 @@
 <% include ./partials/header.ejs %>
-  <div class="w-full min-h-screen bg-zinc-900 text-white py-5">
-    <div class="w-full px-4 flex items-center justify-between">
-      <img class="w-1/4" src="/images/logo.png" alt="">
-      <div class="icons -mt-2 flex gap-5 items-center">
-        <i class="text-[1.4rem] ri-heart-3-line"></i>
-        <i class="text-[1.4rem] ri-messenger-line"></i>
-      </div>
+
+<div class="min-h-screen bg-[#121212]">
+  <header
+    class="fixed top-0 z-10 mx-auto flex w-full max-w-full items-center justify-between border-b-[1px] border-b-slate-300 bg-[#121212] p-4 text-white lg:px-10"
+  >
+    <a href="/feed"
+      ><svg
+        xmlns="http://www.w3.org/2000/svg"
+        id="Logo"
+        width="35.312"
+        height="35.313"
+        viewBox="0 0 35.312 35.313"
+      >
+        <defs>
+          <style>
+            .cls-1 {
+              fill: #ae7aff;
+            }
+
+            .cls-1,
+            .cls-2 {
+              fill-rule: evenodd;
+            }
+
+            .cls-2 {
+              fill: #fff;
+            }
+          </style>
+        </defs>
+        <path
+          class="cls-1"
+          d="M389,18.5h25.321a5,5,0,0,1,5,5V48.82a5,5,0,0,1-5,5H389a5,5,0,0,1-5-5V23.5A5,5,0,0,1,389,18.5Z"
+          transform="translate(-384 -18.5)"
+        />
+        <path
+          class="cls-2"
+          d="M406.384,30.252a1.437,1.437,0,1,1,2.851,0V42.123a1.437,1.437,0,1,1-2.851,0V30.252Zm-0.95.781a17.656,17.656,0,0,1-6.653,1.787v6.731q0.517,0.033,1.034.091a15.227,15.227,0,0,1,5.619,1.684V31.033Zm-7.6,8.462V32.879c-0.647.029-1.33,0.046-1.909,0.057a2.066,2.066,0,0,0-1.893,2.173v2.158a2.059,2.059,0,0,0,1.895,2.168l0.472,0.009Q397.113,39.46,397.831,39.5Zm1.321,1.167c0.27,0.023.54,0.051,0.808,0.084l0.24,1.824a1.08,1.08,0,0,1-.756,1.262,0.841,0.841,0,0,1-.178.019h-0.521a0.955,0.955,0,0,1-.871-0.647l-1.248-2.676q0.8,0.023,1.608.069C398.544,40.616,398.851,40.637,399.152,40.662Z"
+          transform="translate(-384 -18.5)"
+        /></svg
+    ></a>
+    <div class="flex w-max flex-shrink-0 items-center justify-end gap-6">
+      <span class="relative"
+        ><svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          aria-hidden="true"
+          class="h-8 w-8"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+          ></path></svg></span
+      ><span class="relative"
+        ><svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          aria-hidden="true"
+          class="h-8 w-8 text-white"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
+          ></path></svg
+        ><span
+          class="absolute right-1 top-0 flex h-2.5 w-2.5 items-center justify-center rounded-full bg-green-500 p-1 text-white"
+        ></span
+      ></span>
+      <a href="/logout"
+        ><button
+          class="hidden w-max items-center justify-center border-[1px] border-white p-3 text-center font-bold text-white md:inline-flex"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden="true"
+            class="mr-2 h-5 w-5"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 9a.75.75 0 00-1.5 0v2.25H9a.75.75 0 000 1.5h2.25V15a.75.75 0 001.5 0v-2.25H15a.75.75 0 000-1.5h-2.25V9z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+          Logout
+        </button></a
+      >
     </div>
-    <!-- <div class="story px-3 flex gap-3 overflow-auto mt-5">
-      <a href="/story">
-        <div class="circle flex-shrink-0">
-          <div
-            class="gradient w-[18vw] h-[18vw] bg-sky-100 rounded-full bg-gradient-to-r from-purple-700 to-orange-500 flex items-center justify-center">
-            <div class="inner w-[92%] h-[92%] rounded-full overflow-hidden">
-              <img class="w-full h-full object-cover" src="/images/uploads/<%= user.picture %>" alt="">
-            </div>
-          </div>
+  </header>
+  <div
+    class="mt-[65px] grid grid-cols-12 gap-4 pb-8 pt-0 sm:px-4 sm:pt-8 md:mt-[83px] lg:px-10"
+  >
+    <aside
+      class="hidden lg:block col-span-12 text-white md:col-span-5 lg:col-span-4 xl:col-span-3"
+    >
+      <div class="sticky top-[100px] border-b border-white p-4 sm:border">
+        <img
+          class="mb-3 flex aspect-square h-16 w-16 rounded-full border-2 border-[#ae7aff] object-cover"
+          src="/images/uploads/<%= user.profileImage %>"
+          alt="avatar"
+        />
+        <h2 class="mb-1 font-bold">
+          <%= user.firstname %> <%= user.lastname %>
+        </h2>
+        <p class="text-sm"><%= user.tagline %></p>
+        <hr class="my-4 h-[1px] w-full" />
+        <div class="mb-4">
+          <h3 class="mb-1 font-bold">Short Bio</h3>
+          <p class="text-sm"><%= user.bio %></p>
         </div>
-      </a>
-       <% stories.forEach(function(story){ %>
-        <a href="/story/<%= story.id %>">
-          <div class="circle flex-shrink-0">
+        <a href="/profile"
+          ><button
+            class="inline-flex w-max items-center bg-[#ae7aff] px-4 py-2 text-center font-bold text-black shadow-[5px_5px_0px_0px_#4f4e4e] transition-all duration-150 ease-in-out active:translate-x-[5px] active:translate-y-[5px] active:shadow-[0px_0px_0px_0px_#4f4e4e]"
+          >
+            View Profile
+          </button></a
+        >
+      </div>
+    </aside>
+    <section
+      class="col-span-12 text-white md:col-span-7 lg:col-span-5 xl:col-span-6"
+    >
+      <% posts.reverse().forEach(function(post){ %>
+      <div class="post relative mb-2 w-full last:mb-0 sm:mb-4">
+        <div
+          class="flex border-b border-t border-white p-4 text-white sm:border-l sm:border-r"
+        >
+          <div class="h-10 w-10 shrink-0 sm:h-12 sm:w-12">
+            <img
+              src="/images/uploads/<%= post.user.profileImage %>"
+              class="h-full w-full rounded-full object-cover"
+            />
+          </div>
+          <div class="pl-4 pt-1">
+            <div class="mb-2 flex items-center gap-x-2">
+              <div class="w-full">
+                <h2 class="inline-block text-sm"><%= post.user.username %></h2>
+                <span class="ml-2 inline-block text-sm text-gray-400"
+                  >1 hour ago</span
+                >
+              </div>
+              <button class="ml-auto shrink-0 hover:text-[#ae7aff]">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                  class="h-5 w-5"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+            <p class="mb-4 text-sm sm:text-base"><%=post.caption%></p>
             <div
-              class="gradient w-[18vw] h-[18vw] bg-sky-100 rounded-full bg-gradient-to-r from-purple-700 to-orange-500 flex items-center justify-center">
-              <div class="inner w-[92%] h-[92%] rounded-full overflow-hidden">
-                <img class="w-full h-full object-cover" src="/images/uploads/<%= story.user.picture %>" alt="">
+              class="mb-4 grid grid-cols-[repeat(auto-fit,_minmax(200px,_1fr))] gap-4"
+            >
+              <img
+                data-postid="<%= post.id %>"
+                class="postimg w-full h-full object-cover"
+                src="/images/uploads/<%= post.picture %>"
+                alt=""
+              />
+            </div>
+            <div class="flex gap-x-4">
+              <button
+                class="group inline-flex items-center gap-x-1 outline-none after:content-[attr(data-like-count)] focus:after:content-[attr(data-like-count-alt)] hover:text-[#ae7aff] focus:text-[#ae7aff]"
+                data-like-count="102"
+                data-like-count-alt="103"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                  class="h-5 w-5 group-focus:fill-[#ae7aff]"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
+                  ></path>
+                </svg></button
+              ><button
+                class="inline-flex items-center gap-x-1 outline-none hover:text-[#ae7aff]"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                  class="h-5 w-5"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M4.804 21.644A6.707 6.707 0 006 21.75a6.721 6.721 0 003.583-1.029c.774.182 1.584.279 2.417.279 5.322 0 9.75-3.97 9.75-9 0-5.03-4.428-9-9.75-9s-9.75 3.97-9.75 9c0 2.409 1.025 4.587 2.674 6.192.232.226.277.428.254.543a3.73 3.73 0 01-.814 1.686.75.75 0 00.44 1.223zM8.25 10.875a1.125 1.125 0 100 2.25 1.125 1.125 0 000-2.25zM10.875 12a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0zm4.875-1.125a1.125 1.125 0 100 2.25 1.125 1.125 0 000-2.25z"
+                    clip-rule="evenodd"
+                  ></path></svg
+                ><span>18</span>
+              </button>
+              <div class="ml-auto">
+                <button
+                  class="mr-2 inline-flex items-center gap-x-1 outline-none hover:text-[#ae7aff]"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    class="h-5 w-5"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M15.75 4.5a3 3 0 11.825 2.066l-8.421 4.679a3.002 3.002 0 010 1.51l8.421 4.679a3 3 0 11-.729 1.31l-8.421-4.678a3 3 0 110-4.132l8.421-4.679a3 3 0 01-.096-.755z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg></button
+                ><button
+                  class="group inline-flex items-center gap-x-1 outline-none hover:text-[#ae7aff] focus:text-white"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                    class="h-5 w-5 fill-[#ae7aff] text-[#ae7aff] group-focus:fill-none group-focus:text-inherit"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"
+                    ></path>
+                  </svg>
+                </button>
               </div>
             </div>
           </div>
-        </a>
-        <% }) %>
-    </div> -->
-    <div class="posts parent mb-20">
-      <% posts.reverse().forEach(function(post){ %>
-        <div class="post mt-10 w-full min-h-[50vh]">
-          <div class="title px-4 flex items-center gap-2">
-            <div class="w-[9vw] h-[9vw] bg-sky-100 rounded-full overflow-hidden">
-              <img class="w-full h-full object-cover" src="/images/uploads/<%= post.user.profileImage %>" alt="">
-            </div>
-            <h4 class="text-sm">
-              <%= post.user.username %>
-            </h4>
-            <h6 class="text-xs opacity-30">
-              <%= dater(new Date(post.date)) %>
-            </h6>
-          </div>
-          <div class="relative w-full h-96 mt-4 bg-sky-100 overflow-hidden">
-            <img data-postid="<%= post.id %>" class="postimg w-full h-full object-cover"
-              src="/images/uploads/<%= post.picture %>" alt="">
-          </div>
-          <div class="options w-full px-4 flex justify-between items-center text-[1.4rem]">
-            <div class="flex gap-3 mt-2">
-              <% if(post.likes.indexOf(user._id)===-1){ %>
-                <i class="heart ri-heart-3-line"></i>
-                <% } else { %>
-                  <i class="heart ri-heart-3-fill text-red-500"></i>
-                  <% } %>
-                    <i class="ri-chat-3-line"></i>
-                    <i class="ri-share-circle-line"></i>
-            </div>
-            <% if(user.saved.indexOf(post.id)===-1){ %>
-              <i data-postid="<%= post.id %>" class="save ri-bookmark-line"></i>
-              <% } else { %>
-                <i data-postid="<%= post.id %>" class="save ri-bookmark-fill text-zinc-100"></i>
-                <% } %>
-          </div>
-          <h3 class="likeval px-4 mt-2 text-sm leading-none tracking-tight">
-            <%= post.likes.length %> likes
-          </h3>
-          <h2 class="text-white font-light text-sm mt-2">
-            <span class="font-semibold pl-4 pr-2">
-              <%= post.user.username %>
-            </span>
-            <%= post.caption %>
-          </h2>
         </div>
-        <% }) %>
-    </div>
+      </div>
+      <% }) %>
+    </section>
+    <aside class="hidden text-white lg:col-span-3 lg:block">
+      <div class="sticky top-[100px] border p-4">
+        <h2 class="mb-4 font-bold"># Trending Hashtags</h2>
+        <ul class="list-disc pl-4">
+          <li><button class="hover:text-[#ae7aff]">#javascript</button></li>
+          <li><button class="hover:text-[#ae7aff]">#typescript</button></li>
+          <li><button class="hover:text-[#ae7aff]">#java</button></li>
+          <li><button class="hover:text-[#ae7aff]">#python</button></li>
+          <li><button class="hover:text-[#ae7aff]">#golang</button></li>
+        </ul>
+      </div>
+    </aside>
   </div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
-    integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script>
-    function formatRelativeTime(date) {
-      const now = new Date();
-      const diff = now - date;
-
-      // Convert milliseconds to seconds
-      const seconds = Math.floor(diff / 1000);
-
-      if (seconds < 60) {
-        return `${seconds}s`;
-      }
-
-      const minutes = Math.floor(seconds / 60);
-
-      if (minutes < 60) {
-        return `${minutes}m`;
-      }
-
-      const hours = Math.floor(minutes / 60);
-
-      if (hours < 24) {
-        return `${hours}h`;
-      }
-
-      const days = Math.floor(hours / 24);
-
-      if (days < 7) {
-        return `${days}d`;
-      }
-
-      const weeks = Math.floor(days / 7);
-
-      return `${weeks}w`;
-    }
-
-    document.querySelector(".parent")
-      .addEventListener("click", function (dets) {
-        if (dets.target.classList.contains("postimg")) {
-          var post = dets.target.parentNode.parentNode;
-          var heartwithborder = post.querySelector(".heart");
-          if (heartwithborder.classList.contains("ri-heart-3-line")) {
-            heartwithborder.classList.remove("ri-heart-3-line")
-            heartwithborder.classList.add("ri-heart-3-fill")
-            heartwithborder.classList.add("text-red-500")
-            // heartwithborder.style.color = "red";
-          }
-          else {
-            heartwithborder.classList.remove("ri-heart-3-fill")
-            heartwithborder.classList.remove("text-red-500")
-            heartwithborder.classList.add("ri-heart-3-line")
-          }
-          fetch(`/like/${dets.target.dataset.postid}`)
-            .then(raw => raw.json())
-            .then(response => {
-              console.log(response.like.length);
-              post.querySelector(".likeval").textContent = response.like.length + " likes"
-            })
-
-          var icon = document.createElement("i");
-          icon.classList.add("ri-heart-3-fill");
-          icon.classList.add("text-red-700", "text-6xl", 'absolute', 'top-1/2', 'left-1/2', '-translate-x-[50%]', '-translate-y-[50%]', 'z-[9]');
-          dets.target.parentNode.appendChild(icon);
-
-          gsap.from(icon, {
-            scale: .5,
-            y: 30,
-            opacity: 0,
-            ease: Expo,
-            duration: .3
-          })
-
-          gsap.to(icon, {
-            scale: 0,
-            y: -30,
-            opacity: 0,
-            duration: .3,
-            ease: Expo,
-            delay: .3,
-            onComplete: () => {
-              dets.target.parentNode.removeChild(icon);
-            }
-          })
-        }
-        else if (dets.target.classList.contains("save")) {
-          var id = dets.target.dataset.postid;
-          fetch(`/save/${id}`)
-            .then(raw => raw.json())
-            .then(result => {
-              if (!dets.target.classList.contains("ri-bookmark-line")) {
-                dets.target.classList.remove("ri-bookmark-fill", "text-zinc-100");
-                dets.target.classList.add("ri-bookmark-line")
-              }
-              else {
-                dets.target.classList.remove("ri-bookmark-line")
-                dets.target.classList.add("ri-bookmark-fill", "text-zinc-100")
-              }
-            })
-        }
-      })
-  </script>
-
-
-  <% include ./partials/footer.ejs %>
+</div>
+<% include ./partials/footer.ejs %>
