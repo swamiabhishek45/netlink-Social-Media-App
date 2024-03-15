@@ -17,9 +17,9 @@ router.get("/login", function (req, res) {
 });
 
 router.get("/feed", isLoggedIn, async function (req, res) {
-  const user = await userModel.findOne({username: req.session.passport.user})
+  const user = await userModel.findOne({ username: req.session.passport.user });
   const posts = await postsModel.find().populate("user");
-  res.render("feed", { footer: true, posts,user });
+  res.render("feed", { footer: true, posts, user });
 });
 
 router.get("/profile", isLoggedIn, async function (req, res) {
@@ -35,9 +35,9 @@ router.get("/search", isLoggedIn, async function (req, res) {
 });
 router.get("/like/post/:id", isLoggedIn, async function (req, res) {
   const user = await userModel.findOne({ username: req.session.passport.user });
-  const post = await postsModel.findOne({ _id: req.params.id})
+  const post = await postsModel.findOne({ _id: req.params.id });
 
-  post.like.indexOf(user._id)
+  post.like.indexOf(user._id);
 });
 
 router.get("/edit", isLoggedIn, async function (req, res) {
@@ -51,7 +51,7 @@ router.get("/upload", isLoggedIn, async function (req, res) {
 });
 
 router.get("/username/:username", isLoggedIn, async function (req, res) {
-  const regex = new RegExp(`^${req.params.username}`, 'i');
+  const regex = new RegExp(`^${req.params.username}`, "i");
   const users = await userModel.find({ username: regex });
   res.json(users);
 });
@@ -79,19 +79,19 @@ router.post("/register", function (req, res) {
 router.post(
   "/login",
   passport.authenticate("local", {
-    successRedirect: "/profile",
+    successRedirect: "/feed",
     failureRedirect: "/login",
   }),
   function (req, res) {}
 );
 
 // logout route
-router.post("/logout", function (req, res, next) {
+router.get("/logout", function (req, res, next) {
   req.logout(function (err) {
     if (err) {
       return next(err);
     }
-    res.redirect("/");
+    res.redirect("/login");
   });
 });
 
