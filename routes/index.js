@@ -27,8 +27,9 @@ router.get("/profile", isLoggedIn, async function (req, res) {
   res.render("myprofile", { footer: true, user });
 });
 
-router.get("/search", isLoggedIn,  function (req, res) {
- res.render("search", { footer: true });
+router.get("/search", isLoggedIn, async function (req, res) {
+  const user = await userModel.findOne({ username: req.session.passport.user });
+  res.render("search", { footer: true, user });
 });
 
 router.get("/edit", isLoggedIn, async function (req, res) {
@@ -36,8 +37,9 @@ router.get("/edit", isLoggedIn, async function (req, res) {
   res.render("edit", { footer: true, user });
 });
 
-router.get("/upload", isLoggedIn, function (req, res) {
-  res.render("upload", { footer: true });
+router.get("/upload", isLoggedIn, async function (req, res) {
+  const user = await userModel.findOne({ username: req.session.passport.user});
+  res.render("upload", { footer: true, user });
 });
 
 // register route
@@ -83,11 +85,17 @@ router.post("/logout", function (req, res, next) {
 router.post("/update", upload.single("image"), async function (req, res) {
   const user = await userModel.findOneAndUpdate(
     { username: req.session.passport.user },
-    { username: req.body.username, firstname: req.body.firstname, lastname: req.body.lastname, tagline: req.body.tagline, bio: req.body.bio },
+    {
+      username: req.body.username,
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
+      tagline: req.body.tagline,
+      bio: req.body.bio,
+    },
     { new: true }
   );
   if (req.file) {
-    user.picture = req.file.filename;
+    user.profileImage = req.file.filename;
   }
   await user.save();
   res.redirect("/profile");

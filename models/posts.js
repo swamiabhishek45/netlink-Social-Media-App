@@ -5,6 +5,7 @@ const postSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "user"
   },
+  title: String,
   caption: String,
   like: [{
     type: mongoose.Schema.Types.ObjectId,
