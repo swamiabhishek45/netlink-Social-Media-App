@@ -2,7 +2,7 @@
 
 <div class="min-h-screen bg-[#121212]">
   <% include ./partials/profile.ejs %>
-  <div class="w-full max-h-screen  bg-zinc-900 text-white py-5">
+  <div class="w-full max-h-screen bg-zinc-900 text-white py-5">
     <div class="flex flex-col items-center gap-2 mt-10">
       <div
         class="image w-20 h-20 rounded-full border-2 border-zinc-800 flex items-center justify-center"
@@ -14,7 +14,7 @@
       </button>
     </div>
 
-    <div class="flex w-full justify-center items-center mt-10 gap-3">
+    <!-- <div class="flex w-full justify-center items-center mt-10 gap-3">
       <h5
         class="post opacity-100 cursor-pointer border-b-[1px] p-2 border-zinc-400"
       >
@@ -25,7 +25,7 @@
       >
         story
       </h5>
-    </div>
+    </div> -->
     <form
       id="uploadform"
       action="/upload"
@@ -41,21 +41,14 @@
         value="post"
         checked="true"
       />
-      <input
-        class="storyinput"
-        hidden
-        name="category"
-        type="radio"
-        value="story"
-      />
       <input id="imageinp" hidden type="file" name="image" />
       <textarea
         name="caption"
-        class="px-2 py-1 w-full bg-zinc-900 border-2 h-20 border-zinc-800 resize-none outline-none"
+        class="px-2 py-1 w-full bg-zinc-900 border-2 h-32 border-zinc-800 resize-none outline-none"
         placeholder="Write a caption..."
       ></textarea>
       <input
-        class="w-full bg-[#ae7aff] p-3 text-center font-bold text-black shadow-[5px_5px_0px_0px_#4f4e4e] transition-all duration-150 ease-in-out active:translate-x-[5px] active:translate-y-[5px] active:shadow-[0px_0px_0px_0px_#4f4e4e]"
+        class="w-full mt-10 bg-[#ae7aff] p-3 text-center font-bold text-black shadow-[5px_5px_0px_0px_#4f4e4e] transition-all duration-150 ease-in-out active:translate-x-[5px] active:translate-y-[5px] active:shadow-[0px_0px_0px_0px_#4f4e4e]"
         type="submit"
         value="Post"
       />

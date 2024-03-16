@@ -5,3 +5,7 @@
 a:focus {
   outline: none !important;
 }
+
+.active {
+            background-color: #EF4444; /* Override Tailwind's default red color */
+        }

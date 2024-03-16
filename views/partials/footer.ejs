@@ -10,6 +10,17 @@
         </a>
       </div>
 <% } %>
+  <script>
+        const buttons = document.querySelectorAll('.all');
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                buttons.forEach(btn => {
+                    btn.classList.remove('bg-red-500');
+                });
+                button.classList.add('bg-red-500');
+            });
+        });
+    </script>
 </body>
 
 </html>
