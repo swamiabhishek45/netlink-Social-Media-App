@@ -120,4 +120,3 @@ dist
 # End of https://mrkandreev.name/snippets/gitignore-generator/#Node
 
 .env
-vercel.json
