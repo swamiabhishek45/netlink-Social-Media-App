@@ -4,6 +4,12 @@
   "private": true,
   "scripts": {
     "start": "node app.js",
+    "builds": [
+      {
+        "src": "./app.js",
+        "use": "@vercel/node"
+      }
+    ],
     "style": "npx tailwindcss -i ./public/stylesheets/input.css -o ./public/stylesheets/output.css --watch"
   },
   "dependencies": {
