@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var expressSession = require('express-session');
 const mongoose = require("mongoose");
+const DB_NAME = require("./constants.js")
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./models/users');
@@ -14,7 +15,7 @@ const passport = require('passport');
 var app = express();
 const PORT = process.env.PORT || 3000;
 
-mongoose.connect(process.env.MONGO_URL).then(() => {
+mongoose.connect(`${process.env.MONGO_URL}/${DB_NAME}`).then(() => {
   console.log("MONGODB Connected !!!");
 });
 
