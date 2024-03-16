@@ -33,6 +33,8 @@ router.get("/search", isLoggedIn, async function (req, res) {
   const user = await userModel.findOne({ username: req.session.passport.user });
   res.render("search", { footer: true, user });
 });
+
+// TODO: like route 
 router.get("/like/post/:id", isLoggedIn, async function (req, res) {
   const user = await userModel.findOne({ username: req.session.passport.user });
   const post = await postsModel.findOne({ _id: req.params.id });
