@@ -1,15 +1,22 @@
+require("dotenv").config();
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var expressSession = require('express-session');
+const mongoose = require("mongoose");
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./models/users');
 const passport = require('passport');
 
 var app = express();
+const PORT = process.env.PORT || 3000;
+
+mongoose.connect(process.env.MONGO_URI)
+  .then(()=>{console.log("MONGODB Connected !!!");})
+
 
 const postController = require("./controllers/postController");
 // app.get("/posts/:id", postController.getPost);
@@ -64,8 +71,8 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-// app.listen(3000, ()=>{
-//   console.log("Server listening on PORT 3000");
-// } )
+app.listen(PORT, ()=>{
+  console.log(`Server is listening on PORT ${process.env.PORT}`);
+} )
 
 module.exports = app;

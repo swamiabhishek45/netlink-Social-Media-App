@@ -1,9 +1,12 @@
-const mongoose = require('mongoose');
-const plm = require('passport-local-mongoose');
+require("dotenv").config();
+const mongoose = require("mongoose");
+const plm = require("passport-local-mongoose");
 
-mongoose.connect(
-  `mongodb+srv://swamiabhishek45:abhi1234@cluster0.xaiz65q.mongodb.net`
-);
+// mongoose.connect(
+//   `mongodb+srv://swamiabhishek45:abhi1234@cluster0.xaiz65q.mongodb.net`
+// );
+
+// mongoose.connect(`${process.env.MONGODB_URI}`);
 
 const userSchema = mongoose.Schema({
   firstname: String,
@@ -26,4 +29,4 @@ const userSchema = mongoose.Schema({
 userSchema.plugin(plm);
 
 // It allows to do CRUD in DB
-module.exports = mongoose.model("user", userSchema)
+module.exports = mongoose.model("user", userSchema);
