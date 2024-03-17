@@ -38,9 +38,7 @@
           transform="translate(-384 -18.5)"
         /></svg
     ></a>
-    <h3 class="text-lg font-semibold md:text-2xl">
-      @<%=userprofile.username%>
-    </h3>
+
     <div class="flex w-max flex-shrink-0 items-center justify-end gap-6">
       <span class="relative"
         ><a href="/search"
@@ -101,7 +99,9 @@
         <h2 class="mb-1 font-bold">
           <%= userprofile.firstname %> <%= userprofile.lastname %>
         </h2>
-        <!-- <h2 class="mb-1 font-semibold text-gray-600">@<%= user.username %></h2> -->
+        <p class="text-sm opacity-30 leading-none mb-4">
+          @<%= userprofile.username %>
+        </p>
         <p class="text-sm"><%= userprofile.tagline %></p>
         <hr class="my-4 h-[1px] w-full" />
         <div class="mb-4">

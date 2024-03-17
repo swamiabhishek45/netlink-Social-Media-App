@@ -134,8 +134,10 @@
           <div class="pl-4 pt-1">
             <div class="mb-2 flex items-center gap-x-2">
               <div class="w-full">
-                <a href="/profile/:user"><h2 class=" username inline-block text-sm">@<%= post.user.username %></h2></a>
-                <span class="ml-2 inline-block text-sm text-gray-400"
+                <span class="user">
+                  <h2 class="username inline-block text-sm">@<%= post.user.username %></h2>
+                </span>
+                  <span class="ml-2 inline-block text-sm text-gray-400"
                   ><%= dater(new Date(post.date)) %> ago</span
                 >
               </div>

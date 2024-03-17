@@ -28,7 +28,7 @@
         .then((raw) => raw.json())
         .then((result) => {
           let clutter = "";
-
+          // console.log("result", result);
           result.forEach((item) => {
             // console.log(item);
             clutter += `<a href="/profile/${

@@ -17,6 +17,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer">
 </script>
   
+// dater, like and bookmark
   <script>
     function formatRelativeTime(date) {
       const now = new Date();
@@ -117,10 +118,65 @@
       })
   </script>
 
-  <script>
+// get user profile from feed
+  <!-- <script>
+    document.addEventListener("DOMContentLoaded", function () {
+  // Get all username elements within posts
+  const usernames = document.querySelectorAll(".post .username");
+  // console.log("usernames : ",usernames);
 
-    
-  </script>
+  // Attach click event listener to each username element
+  usernames.forEach((username) => {
+    username.addEventListener("click", function () {
+      // Get the username
+      const clickedUsername = username.textContent.trim(); // Trim whitespace
+      // console.log("username : ",clickedUsername);
+      
+      // Fetch user profile data based on the clicked username
+      fetchUserProfile(clickedUsername)
+        .then((user) => {
+          // Render user profile (example)
+          // renderUserProfile(user);
+          console.log(user);
+          let clutter = "";
+          clutter += `<a href="/profile/${user}">
+                  <h2 class="username inline-block text-sm">
+                    @${user.username}</h2></a>`;
+          document.querySelector(".user").innerHTML = clutter;
+        })
+        .catch((error) => {
+          console.error("Error fetching user profile:", error);
+        });
+    });
+  });
+
+  // Example function to fetch user profile data (replace with your actual logic)
+  function fetchUserProfile(username) {
+    // Assuming you have some logic to fetch user profile data based on the username
+    // Here, we're returning a mock Promise with dummy profile data
+    return new Promise((resolve, reject) => {
+      // Example dummy profile data
+      const profile = {
+        username: username,
+      };
+      resolve(profile);
+    });
+  }
+
+  // Example function to render user profile (replace with your actual rendering logic)
+  function renderUserProfile(user) {
+    // Example rendering - replace with your actual rendering logic
+    console.log("Rendering user profile:", user);
+    // Here, you would typically render the user profile data in a modal, sidebar, or another section of your page
+    // Example:
+    // document.querySelectorAll(".post .username").innerHTML = `
+    //     <h2>${profile.username}</h2>
+    // `;
+    return user;
+  }
+});
+
+  </script> -->
 </body>
 
 </html>
