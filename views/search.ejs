@@ -5,7 +5,7 @@
   >
     <i class="text-white ri-search-line"></i>
     <input
-      id="inputusername"
+      id="myInput"
       class="input ml-1 w-full bg-zinc-900 outline-none text-zinc-400"
       type="text"
       placeholder="search username"
@@ -14,45 +14,12 @@
   <div class="users"></div>
 </div>
 
-<script
-  src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.7/axios.min.js"
-  integrity="sha512-NQfB/bDaB8kaSXF8E77JjhHG5PM6XVRxvHzkZiwl3ddWCEPBa23T76MuWSwAJdMGJnmQqM0VeY9kFszsrBEFrQ=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-></script>
-
 <script>
-  const inp = document.querySelector("#inputusername");
-
-  let clutter = "";
-  inp.addEventListener("input", function () {
-    axios.get(`/username/${inp.value}`).then(function (data) {
-      clutter = "";
-      data.data.forEach(function (elem) {
-        clutter += `<a href="/profile/${elem.username}" class="outline-none">
-            <div class="text-white flex items-center gap-2 mt-5">
-                <div class="image w-[11vw] h-[11vw] rounded-full bg-sky-100 overflow-hidden">
-                    <img src="/images/uploads/${elem.profileImage}" alt=""
-                    class="h-full w-full rounded-full object-cover">
-                    </div>
-                <div class="text">
-                    <h3>${elem.firstname ? elem.firstname : ""} ${
-          elem.lastname ? elem.lastname : ""
-        }</h3>
-                    <h4 class="text-xs opacity-30 leading-none"> @${
-                      elem.username ? elem.username : ""
-                    }</h4>
-                    
-                </div>
-            </div>            
-        </a>`;
-      });
-      document.querySelector(".users").innerHTML = clutter;
-    });
+  document.addEventListener("DOMContentLoaded", function () {
+    var input = document.getElementById("myInput");
+    input.focus();
   });
-</script>
 
-<!-- <script>
   var inp = document.querySelector(".input");
 
   inp.addEventListener("input", function (e) {
@@ -63,14 +30,22 @@
           let clutter = "";
 
           result.forEach((item) => {
-            clutter += `<a href="/profile/${item.username}" class="outline-none">
+            // console.log(item);
+            clutter += `<a href="/profile/${
+              item.username
+            }" class="outline-none">
             <div class="text-white flex items-center gap-2 mt-5">
                 <div class="image w-[11vw] h-[11vw] rounded-full bg-sky-100 overflow-hidden">
                     <img src="/images/uploads/${item.profileImage}" alt="">
                     </div>
                 <div class="text">
-                    <h3>${item.username}</h3>
-                    <h4 class="text-xs opacity-30 leading-none">${item.name}</h4>
+                  <div class="flex gap-1">
+                    <h3>${item.firstname ? item.firstname : ""}</h3>
+                    <h3>${item.lastname ? item.lastname : ""}</h3>
+                    </div>
+                    <h4 class="text-xs opacity-30 leading-none">@${
+                      item.username ? item.username : ""
+                    }</h4>
                 </div>
             </div>            
         </a>`;
@@ -80,5 +55,5 @@
         });
     }
   });
-</script> -->
+</script>
 <% include ./partials/footer.ejs %>

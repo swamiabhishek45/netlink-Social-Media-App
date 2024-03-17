@@ -71,7 +71,7 @@
   >
     <div class="sticky top-[100px] border-b border-white p-4 sm:border">
       <img
-        class="mb-3 flex aspect-square h-16 w-16 rounded-full border-2 border-[#ae7aff] object-cover"
+        class="mb-3 flex aspect-square h-16 w-16 rounded-full border-2 bg-sky-100 border-[#ae7aff] object-cover"
         src="/images/uploads/<%= user.profileImage %>"
         alt="avatar"
       />
@@ -85,10 +85,14 @@
       </div>
       <p class="mb-4 flex gap-x-4">
         <span class="inline-block"
-          ><span class="font-bold">455 </span
+          ><span class="font-bold"><%= user.posts.length %> </span
+          ><span class="text-sm text-gray-400">Posts</span></span
+        >
+        <span class="inline-block"
+          ><span class="font-bold"><%= user.followers.length %> </span
           ><span class="text-sm text-gray-400">Followers</span></span
         ><span class="inline-block"
-          ><span class="font-bold">204 </span
+          ><span class="font-bold"><%= user.following.length %> </span
           ><span class="text-sm text-gray-400">Following</span></span
         >
       </p>
@@ -107,7 +111,7 @@
     >
       <ul class="no-scrollbar flex w-full overflow-x-auto px-4 sm:px-0">
         <li class="mr-2 inline-block shrink-0">
-          <a href="/profile"><button id="posts" class="all  inline-block bg-red-400 hover:bg-[#2c2c2c] px-6 py-1.5">
+          <a href="/profile"><button id="posts" class="all  inline-block bg-[#2c2c2c] hover:bg-[#2c2c2c] px-6 py-1.5">
             Posts
           </button></a>
         </li>

@@ -1,56 +1,271 @@
 <% include ./partials/header.ejs %>
-  <div class="w-full min-h-screen bg-zinc-900 text-white py-5">
-      <div class="nav flex justify-between items-center px-4">
-        <h3 class="text-lg"><%= userprofile.username %></h3>
-        <div class="icons flex gap-5">
-          <a href="/upload"><i class="text-[1.4rem] ri-add-box-line"></i></a>
-          <i class="text-[1.4rem] ri-menu-line"></i>
+<div class="min-h-screen bg-[#121212]">
+  <header
+    class="fixed top-0 z-10 mx-auto flex w-full max-w-full items-center justify-between border-b-[1px] border-b-slate-300 bg-[#121212] p-4 text-white lg:px-10"
+  >
+    <a href="/feed"
+      ><svg
+        xmlns="http://www.w3.org/2000/svg"
+        id="Logo"
+        width="35.312"
+        height="35.313"
+        viewBox="0 0 35.312 35.313"
+      >
+        <defs>
+          <style>
+            .cls-1 {
+              fill: #ae7aff;
+            }
+
+            .cls-1,
+            .cls-2 {
+              fill-rule: evenodd;
+            }
+
+            .cls-2 {
+              fill: #fff;
+            }
+          </style>
+        </defs>
+        <path
+          class="cls-1"
+          d="M389,18.5h25.321a5,5,0,0,1,5,5V48.82a5,5,0,0,1-5,5H389a5,5,0,0,1-5-5V23.5A5,5,0,0,1,389,18.5Z"
+          transform="translate(-384 -18.5)"
+        />
+        <path
+          class="cls-2"
+          d="M406.384,30.252a1.437,1.437,0,1,1,2.851,0V42.123a1.437,1.437,0,1,1-2.851,0V30.252Zm-0.95.781a17.656,17.656,0,0,1-6.653,1.787v6.731q0.517,0.033,1.034.091a15.227,15.227,0,0,1,5.619,1.684V31.033Zm-7.6,8.462V32.879c-0.647.029-1.33,0.046-1.909,0.057a2.066,2.066,0,0,0-1.893,2.173v2.158a2.059,2.059,0,0,0,1.895,2.168l0.472,0.009Q397.113,39.46,397.831,39.5Zm1.321,1.167c0.27,0.023.54,0.051,0.808,0.084l0.24,1.824a1.08,1.08,0,0,1-.756,1.262,0.841,0.841,0,0,1-.178.019h-0.521a0.955,0.955,0,0,1-.871-0.647l-1.248-2.676q0.8,0.023,1.608.069C398.544,40.616,398.851,40.637,399.152,40.662Z"
+          transform="translate(-384 -18.5)"
+        /></svg
+    ></a>
+    <h3 class="text-lg font-semibold md:text-2xl">
+      @<%=userprofile.username%>
+    </h3>
+    <div class="flex w-max flex-shrink-0 items-center justify-end gap-6">
+      <span class="relative"
+        ><a href="/search"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            aria-hidden="true"
+            class="h-8 w-8"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+            ></path></svg></a></span
+      ><span class="relative"
+        ><svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          aria-hidden="true"
+          class="h-8 w-8 text-white"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
+          ></path></svg
+        ><span
+          class="absolute right-1 top-0 flex h-2.5 w-2.5 items-center justify-center rounded-full bg-green-500 p-1 text-white"
+        ></span
+      ></span>
+      <a href="/logout"
+        ><button
+          class="w-max items-center justify-center border-[1px] border-white p-2 text-center font-bold text-red-500 md:inline-flex"
+        >
+          Logout
+        </button></a
+      >
+    </div>
+  </header>
+  <div
+    class="mt-[65px] grid grid-cols-12 gap-4 pb-8 pt-0 sm:px-4 sm:pt-8 md:mt-[83px] lg:px-10"
+  >
+    <aside
+      class="col-span-12 text-white md:col-span-5 lg:col-span-4 xl:col-span-3"
+    >
+      <div class="sticky top-[100px] border-b border-white p-4 sm:border">
+        <img
+          class="mb-3 flex aspect-square h-16 w-16 rounded-full border-2 bg-sky-100 border-[#ae7aff] object-cover"
+          src="/images/uploads/<%= userprofile.profileImage %>"
+          alt="avatar"
+        />
+        <h2 class="mb-1 font-bold">
+          <%= userprofile.firstname %> <%= userprofile.lastname %>
+        </h2>
+        <!-- <h2 class="mb-1 font-semibold text-gray-600">@<%= user.username %></h2> -->
+        <p class="text-sm"><%= userprofile.tagline %></p>
+        <hr class="my-4 h-[1px] w-full" />
+        <div class="mb-4">
+          <h3 class="mb-1 font-bold">Short Bio</h3>
+          <p class="text-sm"><%= userprofile.bio %></p>
         </div>
-      </div>
-      <div class="flex justify-between items-center pl-6 pr-[12vw] mt-8">
-        <div class="w-[19vw] h-[19vw] bg-sky-100 rounded-full overflow-hidden">
-          <img class="w-full h-full object-cover" src="/images/uploads/<%= userprofile.picture %>" alt="">
-        </div>
-        <div class="stats flex gap-5 items-center justify-between">
-          <div class="flex flex-col items-center justify-center">
-            <h3 class="text-lg"><%= userprofile.posts.length %></h3>
-            <h4>Posts</h4>
-          </div>
-          <div class="flex flex-col items-center justify-center">
-            <h3 class="text-lg"><%= userprofile.followers.length %></h3>
-            <h4>Followers</h4>
-          </div>
-          <div class="flex flex-col items-center justify-center">
-            <h3 class="text-lg"><%= userprofile.following.length %></h3>
-            <h4>Following</h4>
-          </div>
-        </div>
-      </div>
-      <div class="dets px-6 mt-5">
-        <h3 class="text-lg mb-1"><%= userprofile.name %></h3>
-        <p class="text-xs tracking-tight opacity-50"><%= userprofile.bio ?? "You have not set anything yet, (click edit profile to set)" %></p>
-      </div>
-      <div class="px-6 mt-5 flex gap-1">
+        <p class="mb-4 flex gap-x-4">
+          <span class="inline-block"
+            ><span class="font-bold"><%= userprofile.posts.length %> </span
+            ><span class="text-sm text-gray-400">Posts</span></span
+          >
+          <span class="inline-block"
+            ><span class="font-bold"><%= userprofile.followers.length %> </span
+            ><span class="text-sm text-gray-400">Followers</span></span
+          ><span class="inline-block"
+            ><span class="font-bold"><%= userprofile.following.length %> </span
+            ><span class="text-sm text-gray-400">Following</span></span
+          >
+        </p>
+
         <% if(user.following.indexOf(userprofile._id) === -1){ %>
-            <a class="px-6 py-2 bg-blue-500 text-xs rounded-md" href="/follow/<%= userprofile._id %>">Follow</a>
+
+        <a href="/follow/<%= userprofile._id %>">
+          <button
+            class="inline-flex w-max items-center bg-[#ae7aff] px-4 py-2 text-center font-bold text-black shadow-[5px_5px_0px_0px_#4f4e4e] transition-all duration-150 ease-in-out active:translate-x-[5px] active:translate-y-[5px] active:shadow-[0px_0px_0px_0px_#4f4e4e]"
+          >
+            Follow
+          </button></a
+        >
         <% } else { %>
-            <a class="px-6 py-2 bg-zinc-800 text-xs rounded-md" href="/follow/<%= userprofile._id %>">Following</a>
+        <a href="/follow/<%= userprofile._id %>">
+          <button
+            class="inline-flex w-max items-center bg-zinc-800 px-4 py-2 text-center font-bold text-white shadow-[5px_5px_0px_0px_#4f4e4e] transition-all duration-150 ease-in-out active:translate-x-[5px] active:translate-y-[5px] active:shadow-[0px_0px_0px_0px_#4f4e4e]"
+          >
+            Following
+          </button></a
+        >
         <% } %>
-        <a class="px-6 py-2 bg-zinc-800 text-xs rounded-md" href="/edit">Message</a>
-        <a class="px-6 py-2 bg-zinc-800 text-xs rounded-md" href="/edit">Contact</a>
       </div>
-      <div class="posts w-full flex gap-1 py-2 mt-5 flex-wrap">
-        <% if(userprofile.posts.length>0){ %>
-          <% userprofile.posts.reverse().forEach(function(post){ %>
-            <div class="post w-[32.5%] h-32 bg-sky-100">
-              <img class="w-full h-full object-cover" src="/images/uploads/<%= post.picture %>" alt="">
-            </div>
-          <% }) %>
-        <% } else { %>
-          <div class="w-full flex justify-center items-center min-h-[20vh]">
-            <small class="opacity-50">no posts yet.</small>
+    </aside>
+    <section
+      class="col-span-12 text-white md:col-span-7 lg:col-span-5 xl:col-span-6"
+    >
+      <div class="posts parent relative mb-2 w-full last:mb-0 sm:mb-4">
+        <% if(userprofile.posts.length>0){ %> <%
+        userprofile.posts.reverse().forEach(function(post){ %>
+        <div
+          class="post flex border-b border-t border-white p-4 text-white sm:border-l sm:border-r"
+        >
+          <div class="post h-10 w-10 shrink-0 sm:h-12 sm:w-12">
+            <img
+              src="/images/uploads/<%= userprofile.profileImage%>"
+              alt=""
+              class="h-full w-full rounded-full object-cover bg-sky-100"
+            />
           </div>
+          <div class="pl-4 pt-1">
+            <div class="mb-2 flex items-center gap-x-2">
+              <div class="w-full">
+                <h2 class="inline-block font-bold">
+                  @<%=userprofile.username%>
+                </h2>
+                <span class="ml-2 inline-block text-sm text-gray-400"
+                  ><%= dater(new Date(post.date)) %></span
+                >
+              </div>
+            </div>
+            <p class="mb-4 text-sm sm:text-base"><%=post.caption%></p>
+            <div
+              class="mb-4 grid grid-cols-[repeat(auto-fit,_minmax(200px,_1fr))] gap-4"
+            >
+              <img
+                data-postid="<%= post.id %>"
+                src="/images/uploads/<%=post.picture%>"
+                alt="attachment-0"
+                class="postimg rounded-md"
+              />
+            </div>
+            <div class="options flex gap-x-4">
+              <!-- like btn -->
+              <div>
+                <% if(post.like.indexOf(user._id)===-1){ %>
+                <i class="heart ri-heart-3-line"></i>
+                <% } else { %>
+
+                <i class="heart ri-heart-3-fill text-red-500"></i>
+                <% } %>
+                <span class="likeval"><%= post.like.length %></span>
+              </div>
+              <!--  comment btn -->
+              <button
+                class="inline-flex items-center gap-x-1 outline-none hover:text-[#ae7aff]"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                  class="h-5 w-5"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M4.804 21.644A6.707 6.707 0 006 21.75a6.721 6.721 0 003.583-1.029c.774.182 1.584.279 2.417.279 5.322 0 9.75-3.97 9.75-9 0-5.03-4.428-9-9.75-9s-9.75 3.97-9.75 9c0 2.409 1.025 4.587 2.674 6.192.232.226.277.428.254.543a3.73 3.73 0 01-.814 1.686.75.75 0 00.44 1.223zM8.25 10.875a1.125 1.125 0 100 2.25 1.125 1.125 0 000-2.25zM10.875 12a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0zm4.875-1.125a1.125 1.125 0 100 2.25 1.125 1.125 0 000-2.25z"
+                    clip-rule="evenodd"
+                  ></path></svg
+                ><span class="likeval"><%= post.like.length %></span>
+              </button>
+
+              <div class="ml-auto">
+                <!-- share  -->
+                <button
+                  class="mr-2 inline-flex items-center gap-x-1 outline-none hover:text-[#ae7aff]"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    class="h-5 w-5"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M15.75 4.5a3 3 0 11.825 2.066l-8.421 4.679a3.002 3.002 0 010 1.51l8.421 4.679a3 3 0 11-.729 1.31l-8.421-4.678a3 3 0 110-4.132l8.421-4.679a3 3 0 01-.096-.755z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button>
+
+                <!-- bookmark  -->
+                <% if(user.saved.indexOf(post.id)===-1){ %>
+                <i
+                  data-postid="<%= post.id %>"
+                  class="save ri-bookmark-line"
+                ></i>
+                <% } else { %>
+                <i
+                  data-postid="<%= post.id %>"
+                  class="save ri-bookmark-fill text-zinc-100"
+                ></i>
+                <% } %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% }) %> <% } else { %>
+        <div class="w-full flex justify-center items-center min-h-[20vh]">
+          <small class="opacity-50">no posts yet.</small>
+        </div>
         <% } %>
       </div>
+    </section>
+    <aside class="hidden text-white lg:col-span-3 lg:block">
+      <div class="sticky top-[100px] border p-4">
+        <h2 class="mb-4 font-bold"># Trending Hashtags</h2>
+        <ul class="list-disc pl-4">
+          <li><button class="hover:text-[#ae7aff]">#javascript</button></li>
+          <li><button class="hover:text-[#ae7aff]">#typescript</button></li>
+          <li><button class="hover:text-[#ae7aff]">#java</button></li>
+          <li><button class="hover:text-[#ae7aff]">#python</button></li>
+          <li><button class="hover:text-[#ae7aff]">#golang</button></li>
+        </ul>
+      </div>
+    </aside>
   </div>
-<% include ./partials/footer.ejs %>
+
+  <% include ./partials/footer.ejs %>
+</div>

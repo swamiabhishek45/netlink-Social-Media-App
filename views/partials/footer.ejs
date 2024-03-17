@@ -10,17 +10,117 @@
         </a>
       </div>
 <% } %>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+    integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer">
+</script>
+  
   <script>
-        const buttons = document.querySelectorAll('.all');
-        buttons.forEach(button => {
-            button.addEventListener('click', () => {
-                buttons.forEach(btn => {
-                    btn.classList.remove('bg-red-500');
-                });
-                button.classList.add('bg-red-500');
-            });
-        });
-    </script>
+    function formatRelativeTime(date) {
+      const now = new Date();
+      const diff = now - date;
+
+      // Convert milliseconds to seconds
+      const seconds = Math.floor(diff / 1000);
+
+      if (seconds < 60) {
+        return `${seconds}s`;
+      }
+
+      const minutes = Math.floor(seconds / 60);
+
+      if (minutes < 60) {
+        return `${minutes}m`;
+      }
+
+      const hours = Math.floor(minutes / 60);
+
+      if (hours < 24) {
+        return `${hours}h`;
+      }
+
+      const days = Math.floor(hours / 24);
+
+      if (days < 7) {
+        return `${days}d`;
+      }
+
+      const weeks = Math.floor(days / 7);
+
+      return `${weeks}w`;
+    }
+    document.querySelector(".parent")
+      .addEventListener("click", function (dets) {
+        if (dets.target.classList.contains("postimg")) {
+          var post = dets.target.parentNode.parentNode;
+          var heartwithborder = post.querySelector(".heart");
+          if (heartwithborder.classList.contains("ri-heart-3-line")) {
+            heartwithborder.classList.remove("ri-heart-3-line")
+            heartwithborder.classList.add("ri-heart-3-fill")
+            heartwithborder.classList.add("text-red-500")
+            // heartwithborder.style.color = "red";
+          }
+          else {
+            heartwithborder.classList.remove("ri-heart-3-fill")
+            heartwithborder.classList.remove("text-red-500")
+            heartwithborder.classList.add("ri-heart-3-line")
+          }
+          fetch(`/like/${dets.target.dataset.postid}`)
+            .then(raw => raw.json())
+            .then(response => {
+              // console.log(response.like.length);
+              post.querySelector(".likeval").textContent = response.like.length 
+            })
+
+          var icon = document.createElement("i");
+          icon.classList.add("ri-heart-3-fill");
+          icon.classList.add("text-red-700", "text-6xl", 'absolute', 'top-1/2', 'left-1/2', '-translate-x-[50%]', '-translate-y-[50%]', 'z-[9]');
+          dets.target.parentNode.appendChild(icon);
+
+          gsap.from(icon, {
+            scale: .5,
+            y: 30,
+            opacity: 0,
+            ease: Expo,
+            duration: .3
+          })
+
+          gsap.to(icon, {
+            scale: 0,
+            y: -30,
+            opacity: 0,
+            duration: .3,
+            ease: Expo,
+            delay: .3,
+            onComplete: () => {
+              dets.target.parentNode.removeChild(icon);
+            }
+          })
+        }
+        else if (dets.target.classList.contains("save")) {
+          var id = dets.target.dataset.postid;
+          fetch(`/save/${id}`)
+            .then(raw => raw.json())
+            .then(result => {
+              if (!dets.target.classList.contains("ri-bookmark-line")) {
+                dets.target.classList.remove("ri-bookmark-fill", "text-zinc-100");
+                dets.target.classList.add("ri-bookmark-line")
+              }
+              else {
+                dets.target.classList.remove("ri-bookmark-line")
+                dets.target.classList.add("ri-bookmark-fill", "text-zinc-100")
+              }
+            })
+        }
+      })
+  </script>
+
+  <script>
+
+    
+  </script>
 </body>
 
 </html>

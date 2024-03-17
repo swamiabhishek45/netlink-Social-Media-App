@@ -23,6 +23,24 @@ const userSchema = mongoose.Schema({
       ref: "post",
     },
   ],
+  saved: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "post",
+    },
+  ],
+  followers: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "user",
+    },
+  ],
+  following: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "user",
+    },
+  ],
 });
 
 // It provides serializeuser and deserializeuser methods which are used by the session middleware to manage sessions
