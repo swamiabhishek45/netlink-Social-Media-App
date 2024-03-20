@@ -27,3 +27,5 @@ This project showcases a social media platform built using Node.js, Express.js, 
 Feel free to explore the code, contribute enhancements, or adapt it for your own projects. Let's connect and create together in the ever-evolving landscape of web development!
 
 Happy coding! 🚀
+
+<!-- ![Alt Text](https://github.com/yourusername/yourrepository/raw/main/path/to/your/image.jpg) -->
