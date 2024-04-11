@@ -31,4 +31,4 @@ Happy coding! 🚀
 <!-- ![Alt Text](https://github.com/yourusername/yourrepository/raw/main/path/to/your/image.jpg) -->
 
 ![Register Page](./images/register.png)
- ![alt text](./images/login.png) ![alt text](./images/home.png) ![alt text](./images/editProfile.png) ![alt text](./images/posts.png) ![alt text](./images/createPost.png) ![alt text](./images/resProfile.png) ![alt text](./images/search.png)![alt text](./images/userProfile.png)![alt text](./images/resHome.png)
+ ![alt text](./images/login.png) ![alt text](./images/home.png) ![alt text](./images/posts.png)![alt text](./images/editProfile.png)  ![alt text](./images/createPost.png) ![alt text](./images/resHome.png)![alt text](./images/resProfile.png) ![alt text](./images/userProfile.png)![alt text](./images/search.png)
