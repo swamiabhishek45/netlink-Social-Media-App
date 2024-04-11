@@ -1,4 +1,4 @@
-# Social Media Website - Node.js, Express.js, MongoDB, EJS
+# Social Media App - Node.js, Express.js, MongoDB, EJS
 
 Welcome to my Social Media Website repository! 🌐
 
