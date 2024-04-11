@@ -29,4 +29,6 @@ Feel free to explore the code, contribute enhancements, or adapt it for your own
 Happy coding! 🚀
 
 <!-- ![Alt Text](https://github.com/yourusername/yourrepository/raw/main/path/to/your/image.jpg) -->
-![alt text](image.png)
+
+![Register Page](./images/register.png)
+![alt text](userProfile.png) ![alt text](register.png) ![alt text](login.png) ![alt text](home.png) ![alt text](editProfile.png) ![alt text](posts.png) ![alt text](createPost.png) ![alt text](resHome.png) ![alt text](search.png)
