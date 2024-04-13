@@ -8,7 +8,7 @@
       id="myInput"
       class="input ml-1 w-full bg-zinc-900 outline-none text-zinc-400"
       type="text"
-      placeholder="search username"
+      placeholder="Search username"
     />
   </div>
   <div class="users"></div>
@@ -24,11 +24,11 @@
 
   inp.addEventListener("input", function (e) {
     if (inp.value !== "") {
-      fetch(`/search/${inp.value}`)
+      fetch(`/search/${inp.value.toLowerCase()}`)
         .then((raw) => raw.json())
         .then((result) => {
           let clutter = "";
-          // console.log("result", result);
+          console.log("result", result);
           result.forEach((item) => {
             // console.log(item);
             clutter += `<a href="/profile/${
