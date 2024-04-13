@@ -15,9 +15,14 @@ const passport = require("passport");
 var app = express();
 const PORT = process.env.PORT || 3000;
 
-mongoose.connect(`${process.env.MONGODB_URI}/${DB_NAME}`).then(() => {
-  console.log("MONGODB Connected !!!");
-});
+mongoose
+    .connect(`${process.env.MONGODB_URI}/${DB_NAME}`)
+    .then(() => {
+        console.log("MONGODB Connected !!!");
+    })
+    .catch((err) => {
+        console.error("Error connecting to MongoDB", err);
+    });
 
 const postController = require("./controllers/postController");
 // app.get("/posts/:id", postController.getPost);
