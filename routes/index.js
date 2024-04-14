@@ -117,11 +117,11 @@ router.get("/search/:user", isLoggedIn, async function (req, res) {
     res.json(users);
 });
 
-router.get("/user", isLoggedIn, async function(req, res) {
-  let users = await userModel.find({ username: req.session.passport.user });
+router.get("/user", isLoggedIn, async function (req, res) {
+    let users = await userModel.find({ username: req.session.passport.user });
 
-  res.json(users);
-})
+    res.json(users);
+});
 
 router.get("/save/:postid", isLoggedIn, async function (req, res) {
     let user = await userModel.findOne({ username: req.session.passport.user });
