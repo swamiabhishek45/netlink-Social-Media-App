@@ -1,6 +1,6 @@
-import { v2 as cloudinary } from "cloudinary";
-import { log } from "console";
-import fs from "fs";
+const cloudinary = require("cloudinary").v2;
+const { log } = require("console");
+const fs = require("fs");
 
 cloudinary.config({
     cloud_name: "swamiabhishek45",
@@ -8,7 +8,7 @@ cloudinary.config({
     api_secret: "9oy52IrR-ggfYU0R81Cj9VeQ4wE",
 });
 
-const uploadCloudinary = async (localFilePath) => {
+exports.uploadCloudinary = async (localFilePath) => {
     try {
         if (!localFilePath) return null;
         // upload the file on cloudinary
@@ -27,4 +27,4 @@ const uploadCloudinary = async (localFilePath) => {
     }
 };
 
-export { uploadCloudinary };
+// export { uploadCloudinary };

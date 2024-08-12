@@ -6,6 +6,8 @@ const passport = require("passport");
 const localStrategy = require("passport-local");
 const upload = require("./multer");
 const utils = require("../utils/utils");
+const cloudinary = require('../utils/cloudinary')
+
 
 passport.use(new localStrategy(userModel.authenticate()));
 
@@ -226,11 +228,14 @@ router.post(
     isLoggedIn,
     upload.single("image"),
     async function (req, res) {
+        // console.log("result",req.file);
+        const response = await cloudinary.uploadCloudinary(req.file.path);
+        console.log("result", response);
         const user = await userModel.findOne({
             username: req.session.passport.user,
         });
         const post = await postsModel.create({
-            picture: req.file.filename,
+            picture: response.secure_url,
             user: user._id,
             caption: req.body.caption,
         });

@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+// Defining a schema using Mongoose.
 const postSchema = mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
@@ -30,4 +31,5 @@ const postSchema = mongoose.Schema({
     picture: String,
 });
 
+// Exporting the model to be used in the application.
 module.exports = mongoose.model("post", postSchema);

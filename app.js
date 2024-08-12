@@ -12,9 +12,11 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./models/users");
 const passport = require("passport");
 
+// Setting up Express.
 var app = express();
 const PORT = process.env.PORT || 3000;
 
+// Connecting to MongoDB.
 mongoose
     .connect(`${process.env.MONGODB_URI}/${DB_NAME}`)
     .then(() => {
@@ -28,7 +30,7 @@ const postController = require("./controllers/postController");
 // app.get("/posts/:id", postController.getPost);
 app.post("/posts/:id/delete", postController.deletePost);
 
-// view engine setup
+// Setting EJS as the templating engine.
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
@@ -40,13 +42,14 @@ app.use(
     secret: "This is my secret",
   })
 ),
-  app.use(passport.initialize()); // Allow users to logged in always
+  
+app.use(passport.initialize()); // Allow users to logged in always
 app.use(passport.session()); // save data on server
 passport.serializeUser(usersRouter.serializeUser());
 passport.deserializeUser(usersRouter.deserializeUser());
 
 app.use(logger("dev"));
-app.use(express.json());
+app.use(express.json());  // Middleware for parsing JSON and URL-encoded data.
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
