@@ -1,6 +1,5 @@
 const cloudinary = require("cloudinary").v2;
 const { log } = require("console");
-const fs = require("fs");
 
 cloudinary.config({
     cloud_name: "swamiabhishek45",
@@ -23,7 +22,7 @@ exports.uploadCloudinary = async (localFilePath) => {
         );
         return response;
     } catch (error) {
-        fs.unlinkSync(localFilePath); // remove the locally saved temp file as the upload operation got failed
+        throw error;
     }
 };
 

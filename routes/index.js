@@ -6,8 +6,8 @@ const passport = require("passport");
 const localStrategy = require("passport-local");
 const upload = require("./multer");
 const utils = require("../utils/utils");
-const cloudinary = require('../utils/cloudinary')
-
+const cloudinary = require("../utils/cloudinary");
+const fs = require("fs");
 
 passport.use(new localStrategy(userModel.authenticate()));
 
@@ -228,21 +228,27 @@ router.post(
     isLoggedIn,
     upload.single("image"),
     async function (req, res) {
-        // console.log("result",req.file);
-        const response = await cloudinary.uploadCloudinary(req.file.path);
-        console.log("result", response);
-        const user = await userModel.findOne({
-            username: req.session.passport.user,
-        });
-        const post = await postsModel.create({
-            picture: response.secure_url,
-            user: user._id,
-            caption: req.body.caption,
-        });
+        try {
+            const response = await cloudinary.uploadCloudinary(req.file.path);
+            console.log("result", response);
 
-        user.posts.push(post._id);
-        await user.save();
-        res.redirect("/feed");
+            const user = await userModel.findOne({
+                username: req.session.passport.user,
+            });
+            const post = await postsModel.create({
+                picture: response.secure_url,
+                user: user._id,
+                caption: req.body.caption,
+            });
+
+            user.posts.push(post._id);
+            await user.save();
+            res.redirect("/feed");
+        } catch (error) {
+            console.log(error);
+        } finally {
+            fs.unlinkSync(req.file.path); // remove the locally saved temp file as the upload operation got failed
+        }
     }
 );
 
