@@ -1,5 +1,4 @@
 const cloudinary = require("cloudinary").v2;
-const { log } = require("console");
 
 cloudinary.config({
     cloud_name: "swamiabhishek45",
@@ -25,5 +24,3 @@ exports.uploadCloudinary = async (localFilePath) => {
         throw error;
     }
 };
-
-// export { uploadCloudinary };

@@ -94,7 +94,7 @@
       <div class="sticky top-[100px] border-b border-white p-4 sm:border">
         <img
           class="mb-3 flex aspect-square h-16 w-16 rounded-full border-2 bg-sky-100 border-[#ae7aff] object-cover"
-          src="/images/uploads/<%= userprofile.profileImage %>"
+          src="<%= userprofile.profileImage %>"
           alt="avatar"
         />
         <h2 class="font-bold">
@@ -154,7 +154,7 @@
         >
           <div class="post h-10 w-10 shrink-0 sm:h-12 sm:w-12">
             <img
-              src="/images/uploads/<%= userprofile.profileImage%>"
+              src="<%= userprofile.profileImage%>"
               alt=""
               class="h-full w-full rounded-full object-cover bg-sky-100"
             />
@@ -176,7 +176,7 @@
             >
               <img
                 data-postid="<%= post.id %>"
-                src="/images/uploads/<%=post.picture%>"
+                src="<%=post.picture%>"
                 alt="attachment-0"
                 class="postimg rounded-md"
               />

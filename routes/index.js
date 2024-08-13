@@ -210,11 +210,18 @@ router.post("/update", upload.single("image"), async function (req, res) {
         },
         { new: true }
     );
-    if (req.file) {
-        user.profileImage = req.file.filename
-            ? req.file.filename
-            : "../public/images/profile.jpg";
+    try {
+        const response = await cloudinary.uploadCloudinary(req.file.path);
+
+        if (req.file) {
+            user.profileImage = response.secure_url;
+        }
+    } catch (error) {
+        throw error;
+    } finally {
+        fs.unlinkSync(req.file.filename); // remove the locally saved temp file as the upload operation got failed
     }
+
     await user.save();
 
     req.login(user, function (err) {
@@ -230,7 +237,7 @@ router.post(
     async function (req, res) {
         try {
             const response = await cloudinary.uploadCloudinary(req.file.path);
-            console.log("result", response);
+            // console.log("result", response);
 
             const user = await userModel.findOne({
                 username: req.session.passport.user,
