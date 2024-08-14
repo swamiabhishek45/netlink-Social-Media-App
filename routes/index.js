@@ -218,9 +218,7 @@ router.post("/update", upload.single("image"), async function (req, res) {
         }
     } catch (error) {
         throw error;
-    } finally {
-        fs.unlinkSync(req.file.filename); // remove the locally saved temp file as the upload operation got failed
-    }
+    }   
 
     await user.save();
 
