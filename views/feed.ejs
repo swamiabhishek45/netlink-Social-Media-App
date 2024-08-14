@@ -266,15 +266,17 @@
                 >
 
                 <!-- bookmark  -->
+                <button class="cursor-pointer">
                 <% if(user.saved.indexOf(post.id)===-1){ %>
-              <i data-postid="<%= post.id %>" class="save ri-bookmark-line"></i>
-              <% } else { %>
-                <i data-postid="<%= post.id %>" class="save ri-bookmark-fill text-zinc-100"></i>
-                <% } %>
+
+                    <i data-postid="<%= post.id %>" class="save ri-bookmark-line"></i>
+                    <% } else { %>
+                      <i data-postid="<%= post.id %>" class="save ri-bookmark-fill text-zinc-100"></i>
+                      <% } %>
                 <!-- <button
-                  class="group inline-flex items-center gap-x-1 outline-none hover:text-[#ae7aff] focus:text-white"
+                class="group inline-flex items-center gap-x-1 outline-none hover:text-[#ae7aff] focus:text-white"
                 >
-                  <svg
+                <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
@@ -282,15 +284,16 @@
                     stroke="currentColor"
                     aria-hidden="true"
                     class="h-5 w-5 fill-[#ae7aff] text-[#ae7aff] group-focus:fill-none group-focus:text-inherit"
-                  >
+                    >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"
                     ></path>
                   </svg>
                 </button> -->
-              
+                
+              </button>
               </div>
             </div>
           </div>

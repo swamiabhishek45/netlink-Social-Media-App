@@ -100,17 +100,20 @@
                 </button>
 
                 <!-- bookmark  -->
-                <% if(user.saved.indexOf(post.id)===-1){ %>
-                <i
+                 <button class="cursor-pointer">
+
+                   <% if(user.saved.indexOf(post.id)===-1){ %>
+                    <i
                   data-postid="<%= post.id %>"
                   class="save ri-bookmark-line"
-                ></i>
-                <% } else { %>
-                <i
-                  data-postid="<%= post.id %>"
-                  class="save ri-bookmark-fill text-zinc-100"
-                ></i>
-                <% } %>
+                  ></i>
+                  <% } else { %>
+                    <i
+                    data-postid="<%= post.id %>"
+                    class="save ri-bookmark-fill text-zinc-100"
+                    ></i>
+                    <% } %>
+                  </button>
               </div>
             </div>
           </div>
